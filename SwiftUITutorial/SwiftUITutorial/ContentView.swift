@@ -9,6 +9,7 @@ let gradientColors: [Color] = [
 struct ContentView: View {
     var body: some View {
         TabView {
+            PickAPalView()
             DiceRollerView()
                 .tabItem {
                     Label("DiceRollerView", systemImage: "die.face.1")
