@@ -7,7 +7,11 @@
 
 import Foundation
 
-var landmarks: [Landmark] = load("landmarkData.json")
+@Observable
+class ModelData {
+    var landmarks: [Landmark] = load("landmarkData.json")    
+}
+
 
 // Tはジェネリック型パラメータであり、Decodableプロトコルに準拠する任意の型を受け入れることができます
 func load<T: Decodable>(_ filename: String) -> T {

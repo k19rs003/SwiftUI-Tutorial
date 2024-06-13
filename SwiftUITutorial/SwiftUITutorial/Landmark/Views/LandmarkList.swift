@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct LandmarkList: View {
+    // 型そのものを渡したいから.self
+    //Swiftの型システムでは、型そのものを参照するためにselfを使います。ModelDataとだけ書くと、それはModelData型の値やインスタンスを期待するものと解釈される可能性があります。しかし、ModelData.selfと書くことで、ModelData型そのものを指していることを明示的に示します。
+    //    var landmarks: [Landmark]
+    @Environment(ModelData.self) var modelData
     @State private var showFavoriteOnly = false
+
     
     var filteredLandmarks: [Landmark] {
-        landmarks.filter { landmark in
+        modelData.landmarks.filter { landmark in
             (!showFavoriteOnly || landmark.isFavorite)
         }
     }
@@ -51,5 +56,8 @@ struct LandmarkList: View {
 }
 
 #Preview {
+//    LandmarkList(landmarks: ModelData().landmarks)
+//        .environment(ModelData())
     LandmarkList()
+        .environment(ModelData())
 }
